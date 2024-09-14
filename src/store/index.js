@@ -1,17 +1,18 @@
-// store.ts
-import { InjectionKey } from 'vue'
-import { createStore, Store } from 'vuex'
+import { createStore } from "vuex";
 
-// define your typings for the store state
-export interface State {
-  count: number
-}
-
-// define injection key
-export const key: InjectionKey<Store<State>> = Symbol()
-
-export const store = createStore<State>({
+export default createStore({
   state: {
-    count: 0
-  }
-})
+    project : 'Vue3 + Vuetify',
+    desc : 'Starter Template',
+    username : "100SANG",
+    email: '100sang.net@gmail.com',
+    theme: 'light'
+  },
+  getters: {
+  },
+  mutations: {
+  },
+  actions: {
+  },
+});
+ 
