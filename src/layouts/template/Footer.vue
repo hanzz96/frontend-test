@@ -1,7 +1,7 @@
 <template>
    <v-footer color="copyright" app inset height="45">
 
-      <h5 class="font-weight-light">{{ new Date().getFullYear() }} — <strong>Vuetify Theme</strong></h5>
+      <h5 class="font-weight-light">Frontend Test — <strong>Vuetify Theme + Vuex</strong></h5>
       <v-spacer></v-spacer>
 
       <v-btn
@@ -20,10 +20,7 @@
 export default {
    data: () => ({
       icons: [
-        'mdi-facebook',
-        'mdi-twitter',
         'mdi-linkedin',
-        'mdi-instagram',
       ],
     }),
 }

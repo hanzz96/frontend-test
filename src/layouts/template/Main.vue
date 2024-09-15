@@ -3,11 +3,9 @@
       <Header />
       <Sidebar />
       <v-main>        
-        <Toolbar />
         <v-container fluid>     
-          <Gallery />
-          <List />     
-        </v-container>
+          Hello World, this is just frontend test.
+          </v-container>
         <Footer />
       </v-main>
   </v-app>
