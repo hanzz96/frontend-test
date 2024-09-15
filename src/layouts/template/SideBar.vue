@@ -59,7 +59,7 @@ export default {
         username : this.$store.state.user.username,
         menus: [
           { title: 'Products', value: "/product", prependIcon: 'mdi-bottle-tonic-outline'},
-          { title: 'Warranty Claim', value: "/warranty-claims", prependIcon: 'mdi-package-check'},
+          { title: 'Warranty Claim', value: "/warranty-claim", prependIcon: 'mdi-package-check'},
         ],
         rail: true,
       }

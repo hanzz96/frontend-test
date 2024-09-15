@@ -5,6 +5,8 @@ import store from '@/store';
 import { manageVuexModule } from '@/store/managerVuextModule';
 import productsModule from '@/views/Product/productModule';
 import { AuthRoutes } from './authRoutes';
+import claimModule from '@/views/WarrantyClaim/warrantyClaimModule';
+import { kebabToCamel } from '@/filter';
 
 const routes = [
   {
@@ -26,6 +28,7 @@ const router = createRouter({
 
 let registeredModules = {
   product: productsModule,
+  warrantyClaim: claimModule,
 };
 
 router.beforeEach((to, from, next) => {
@@ -40,16 +43,18 @@ router.beforeEach((to, from, next) => {
   else if (to.matched.some(record => record.meta.guest) && isAuthenticated) {
     next({ name: 'dashboard' });
   } else {
+    console.log(to.name,'to.name');
+    console.log(from.name,'from.name');
+    let toRouteKebabCase = kebabToCamel(to.name);
 
-    // Manage products module for /product and its children
-    if (to.path.startsWith('/product')) {
-      // store.registerModule('products', registeredModules['products']);
-      // manageVuexModule(store, registeredModules, 'product', true);
-    } 
-    // else {
-    //   store.unregisterModule('products');
-    //   manageVuexModule(store, registeredModules, 'product', false);
-    // }
+    if(registeredModules[toRouteKebabCase]){  
+      store.registerModule(toRouteKebabCase, registeredModules[toRouteKebabCase]);
+    }
+
+    let fromRouteKebabCase = kebabToCamel(from.name);
+    if(from.name != '' && registeredModules[fromRouteKebabCase]){
+      store.unregisterModule(fromRouteKebabCase);
+    }
 
     next();
   }

@@ -1,29 +1,81 @@
 import { PRODUCTS_KEY } from "@/const/storageKey";
+import { v4 as uuidv4 } from 'uuid';
 
 const productsModule = {
     namespaced: true,
     state: {
       products: [],
+      modelProduct: {
+        product: '',
+        serialNumber: '',
+        warrantyPeriodDays: ''
+      },
+      editProduct: {}
     },
     mutations: {
+      RESET_EDIT_PRODUCT(state) {
+        state.modelProduct = {};
+      },
+      RESET_MODEL_PRODUCT(state) {
+        state.modelProduct = {
+          product: '',
+          serialNumber: '',
+          warrantyPeriodDays: ''
+        };
+      },
       ADD_PRODUCT(state, product) {
-        state.products.push(product);
+        state.products.unshift(product);
         localStorage.setItem(PRODUCTS_KEY, JSON.stringify(state.products));
 
         state.products = JSON.parse(localStorage.getItem(PRODUCTS_KEY)) || [];
       },
+      SET_MODEL_PRODUCT(state, product) {
+        state.modelProduct = product;
+      },
       SET_PRODUCTS(state, products) {
         state.products = products;
+      },
+      DELETE_PRODUCT(state, id) {
+        state.products = state.products.filter(product => product._id !== id);
+        localStorage.setItem(PRODUCTS_KEY, JSON.stringify(state.products));
       },
     },
     actions: {
       addProduct({ commit }, product) {
-        commit('ADD_PRODUCT', product);
+        let id = uuidv4();
+
+        let finalProduct = {
+          id,
+          product: product.product,
+          serialNumber: product.serialNumber,
+          warrantyPeriodDays: product.warrantyPeriodDays,
+          createdAt: new Date().toISOString()
+        }
+
+        commit('ADD_PRODUCT', finalProduct);
+        commit('RESET_MODEL_PRODUCT');
+        // commit('ADD_PRODUCT', product);
+      },
+      updateProduct({ commit }, product) {
+        commit('UPDATE_PRODUCT', product);
+        commit('RESET_MODEL_PRODUCT');
+      },
+      deleteProduct({ commit }, id) {
+        commit('DELETE_PRODUCT', id);
+      },
+      setModelProduct({ commit }, product) {
+        commit('SET_MODEL_PRODUCT', product);
       },
       fetchProducts({ commit }) {
         // In a real app, fetch from an API or local storage
         const products = JSON.parse(localStorage.getItem(PRODUCTS_KEY)) || [];
         commit('SET_PRODUCTS', products);
+      },
+      resetModelProduct({ commit }) {
+        commit('RESET_MODEL_PRODUCT');
+      },
+      resetEditProduct({ commit }) {
+        commit('RESET_EDIT_PRODUCT');
       },
     },
     getters: {

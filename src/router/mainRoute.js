@@ -12,8 +12,8 @@ export const routes =
   children: [
     { path: '/', name: 'home', component: () => import('@/views/Home.vue'), meta: { requiresAuth: true } },
     {
-      path: '/product', name: 'product', component: () => import('@/views/Product/Landing.vue'), meta: { requiresAuth: true }
+      path: '/product/:id?', name: 'product', component: () => import('@/views/Product/Landing.vue'), meta: { requiresAuth: true }
     },
-    { path: '/warranty-claims', name: 'warranty-claims', component: () => import('@/views/WarrantyClaim/Landing.vue'), meta: { requiresAuth: true } },
+    { path: '/warranty-claim', name: 'warranty-claim', component: () => import('@/views/WarrantyClaim/Landing.vue'), meta: { requiresAuth: true } },
   ]
 }
