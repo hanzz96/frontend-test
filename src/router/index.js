@@ -33,7 +33,6 @@ let registeredModules = {
 router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters.isAuthenticated || localStorage.getItem('user') || sessionStorage.getItem('user');
 
-  // console.log(isAuthenticated,'isauthenticated');
   // If trying to access a protected route without being logged in
   if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
     next({ name: 'login' });
@@ -42,8 +41,6 @@ router.beforeEach((to, from, next) => {
   else if (to.matched.some(record => record.meta.guest) && isAuthenticated) {
     next({ name: 'dashboard' });
   } else {
-    console.log(to.name,'to.name');
-    console.log(from.name,'from.name');
     let toRouteKebabCase = kebabToCamel(to.name);
 
     if(registeredModules[toRouteKebabCase]){  

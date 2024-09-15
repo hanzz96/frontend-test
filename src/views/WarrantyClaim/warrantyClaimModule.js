@@ -33,7 +33,6 @@ const claimModule = {
   actions: {
     actionApprovalClaim({ commit, getters }, payload) {
       try {
-        console.log(payload, 'payload');
         const findIndex = getters.allClaims.findIndex(claim => claim._id === payload.clickedData._id);
         if (findIndex === -1) {
           throw new Error('Claim not found');

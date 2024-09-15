@@ -29,7 +29,6 @@ export default {
         /**
          * reset the data
          */
-        console.log('init starterData...');
         this.$store.dispatch('starterData');
         const storedUser = JSON.parse(localStorage.getItem('user')) || JSON.parse(sessionStorage.getItem('user'));
         if (storedUser) {

@@ -45,7 +45,7 @@ const productsModule = {
       let id = uuidv4();
 
       let finalProduct = {
-        id,
+        _id: id,
         product: product.product,
         serialNumber: product.serialNumber,
         warrantyPeriodDays: product.warrantyPeriodDays,

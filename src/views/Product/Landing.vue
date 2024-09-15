@@ -70,7 +70,6 @@ export default {
   name: 'ProductLanding',
   watch: {
     dialog(newVal) {
-      console.log(newVal, 'dialog');
       if(newVal == false){
         this.resetEditProduct();
       }
@@ -112,14 +111,12 @@ export default {
     },
 
     deleteItem(item) {
-      console.log(item, 'item', item.value);
       this.editedIndex = this.allProducts.findIndex(product => product._id === item.value._id);
 
       if (this.editedIndex === -1) {
         //errors
         return;
       }
-      console.log(this.editedIndex, 'editedIndex');
       this.candidateDelete = this.allProducts[this.editedIndex];
       this.dialogDelete = true
     },

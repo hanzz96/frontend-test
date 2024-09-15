@@ -70,7 +70,6 @@ export default {
         }),
         ...mapGetters('product', ['allProducts']),
         formTitle() {
-            console.log(this.modelProduct, 'modelProduct');
             return Object.hasOwn(this.modelProduct, '_id') ? 'Edit Product' : 'New Product';
         }
     },
@@ -79,7 +78,6 @@ export default {
         validateData() {
             const findUniqueSnAndProduct = this.allProducts.find(product => product.serialNumber === this.modelProduct.serialNumber && product.product === this.modelProduct.product);
             
-            console.log(findUniqueSnAndProduct, 'findUniqueSnAndProduct');
 
             if (findUniqueSnAndProduct) {
                 this.errorMessage = 'Serial Number and Product must be unique';
