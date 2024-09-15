@@ -12,9 +12,7 @@
                     <v-alert v-if="error" type="error">{{ error }}</v-alert>
                 </v-form>
             </v-card-text>
-            <v-card-actions>
-                <v-btn :disabled="!valid" color="primary" @click="submit">Login</v-btn>
-            </v-card-actions>
+            <v-btn :disabled="!valid" @click="submit">Login</v-btn>
         </v-card-text>
     </v-card>
 </template>

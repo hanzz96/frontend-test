@@ -2,23 +2,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes as mainRoutes } from './mainRoute';
 import store from '@/store';
+import { manageVuexModule } from '@/store/managerVuextModule';
+import productsModule from '@/views/Product/productModule';
+import { AuthRoutes } from './authRoutes';
 
-const routes = [  
+const routes = [
   {
-    path: '/login',  name: 'Login',
-    component: () => import('@/views/Login/Base')
+    path: '/demo', name: 'Demo',
+    component: () => import('@/views/Demo'),
   },
   {
-    path: '/demo',   name: 'Demo',
-    component: () => import('@/views/Demo')
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/404Page.vue')
   },
-  ...mainRoutes
+  mainRoutes,
+  AuthRoutes
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 })
+
+let registeredModules = {
+  product: productsModule,
+};
 
 router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters.isAuthenticated || localStorage.getItem('user') || sessionStorage.getItem('user');
@@ -32,6 +40,17 @@ router.beforeEach((to, from, next) => {
   else if (to.matched.some(record => record.meta.guest) && isAuthenticated) {
     next({ name: 'dashboard' });
   } else {
+
+    // Manage products module for /product and its children
+    if (to.path.startsWith('/product')) {
+      // store.registerModule('products', registeredModules['products']);
+      // manageVuexModule(store, registeredModules, 'product', true);
+    } 
+    // else {
+    //   store.unregisterModule('products');
+    //   manageVuexModule(store, registeredModules, 'product', false);
+    // }
+
     next();
   }
 });

@@ -15,7 +15,7 @@
            <v-avatar
               color="grey-darken-2"
             >
-              <span class="text-h6">MJ</span>
+              <span class="text-h6">JO</span>
           </v-avatar>
           </template>
           <template v-slot:append>
@@ -35,6 +35,7 @@
           :key="item.title"
           :value="item.value"
           :title="item.title"
+          :to="item.type === 'external' ? '' : item.value"
         >
           <template v-slot:prepend>
             <v-icon :icon="item.prependIcon"></v-icon>
@@ -57,11 +58,17 @@ export default {
         email : this.$store.state.role,
         username : this.$store.state.user.username,
         menus: [
-          { title: 'Products', value: 1, prependIcon: 'mdi-bottle-tonic-outline'},
-          { title: 'Warranty Claim', value: 2, prependIcon: 'mdi-package-check'},
+          { title: 'Products', value: "/product", prependIcon: 'mdi-bottle-tonic-outline'},
+          { title: 'Warranty Claim', value: "/warranty-claims", prependIcon: 'mdi-package-check'},
         ],
         rail: true,
       }
+  },
+  methods: {
+    goTo(value) {
+      this.$router.push({ name: value });
+      // console.log(value);
+    }
   }
 }
 </script>

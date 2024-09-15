@@ -1,14 +1,9 @@
 <template>
-    <Layout />
-  </template>
+  This is Home
+</template>
+
+<script>
+export default {
   
-  <script>
-  import Layout from '@/layouts/template/Main'
-  
-  export default {
-   components:{
-     Layout
-   },
-  }
-  </script>
-  
+}
+</script>
