@@ -78,7 +78,6 @@ export default {
         validateData() {
             const findUniqueSnAndProduct = this.allProducts.find(product => product.serialNumber === this.modelProduct.serialNumber && product.product === this.modelProduct.product);
             
-
             if (findUniqueSnAndProduct) {
                 this.errorMessage = 'Serial Number and Product must be unique';
                 this.showErrorAlert = true;

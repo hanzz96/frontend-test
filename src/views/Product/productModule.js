@@ -10,7 +10,6 @@ const productsModule = {
       serialNumber: '',
       warrantyPeriodDays: ''
     },
-    editProduct: {}
   },
   mutations: {
     RESET_EDIT_PRODUCT(state) {
@@ -30,7 +29,15 @@ const productsModule = {
       state.products = JSON.parse(localStorage.getItem(PRODUCTS_KEY)) || [];
     },
     SET_MODEL_PRODUCT(state, product) {
-      state.modelProduct = product;
+      state.modelProduct = {...product};
+    },
+    UPDATE_PRODUCT(state, product) {
+      const index = state.products.findIndex(p => p._id === product._id);
+      if (index !== -1) {
+        state.products[index] = product;
+        localStorage.setItem(PRODUCTS_KEY, JSON.stringify(state.products));
+        state.products = JSON.parse(localStorage.getItem(PRODUCTS_KEY)) || [];
+      }
     },
     SET_PRODUCTS(state, products) {
       state.products = products;
@@ -41,6 +48,10 @@ const productsModule = {
     },
   },
   actions: {
+    editProduct({ commit }, product) {
+      console.log(product, 'product');
+      commit('UPDATE_PRODUCT', product );  
+    },
     addProduct({ commit }, product) {
       let id = uuidv4();
 
