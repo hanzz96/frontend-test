@@ -6,11 +6,9 @@ export default createStore({
   state: {
     project : 'Vue3 + Vuetify',
     desc : 'Starter Template',
-    username : "100SANG",
-    email: '100sang.net@gmail.com',
     role: 'STAFF',
     theme: 'dark',
-    user: JSON.parse(localStorage.getItem('user')) || null,
+    user: JSON.parse(localStorage.getItem('user')) || JSON.parse(sessionStorage.getItem('user')) || null,
     /**
      * assume menu access are data provided by backend
      */

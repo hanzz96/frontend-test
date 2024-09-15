@@ -29,9 +29,6 @@
 
       <v-divider></v-divider>
 
-
-
-     <!-- Main Menu -->
       <v-list density="compact" nav>
         <v-list-item
           v-for="item in menus"
@@ -46,45 +43,23 @@
 
       </v-list>
     </v-navigation-drawer>
-
-
-    <!-- Sub Menu -->
-    <!-- <v-navigation-drawer permanent>
-      <v-list :items="submenus"> </v-list>
-    </v-navigation-drawer> -->
-
-
     </div>
 </template>
 
 <script>
 export default {
+  mounted() {
+    console.log(this.$store.state.user);
+  },
   data () {
       return {
         drawer: true,
-        email : this.$store.state.email,
-        username : this.$store.state.username,
+        email : this.$store.state.role,
+        username : this.$store.state.user.username,
         menus: [
           { title: 'Products', value: 1, prependIcon: 'mdi-bottle-tonic-outline'},
           { title: 'Warranty Claim', value: 2, prependIcon: 'mdi-package-check'},
-          // { title: 'Starred', value: 3, prependIcon: 'mdi-star'},
-          // { title: 'Gallery', value: 4, prependIcon: 'mdi-image-multiple'},
-          // { title: 'Trash', value: 5, prependIcon: 'mdi-trash-can-outline'},
-          // { title: 'Usage', value: 6, prependIcon: 'mdi-cloud-outline'},
         ],
-        // submenus: [
-        //     { type: 'subheader', title: 'Folders' },
-        //     { title: 'Phohtos', value: 1, },
-        //     { title: 'Recipes', value: 2, },
-        //     { title: 'Vacation', value: 3, },
-        //     { type: 'divider' },
-        //     { type: 'subheader', title: 'Files' },
-        //     { title: 'Work', value: 4, },
-        //     { title: 'Project', value: 5, },
-        //     { title: 'Travel', value: 6, },
-        //     { title: 'Study', value: 7, },
-        //     { type: 'divider' },
-        // ],
         rail: true,
       }
   }
