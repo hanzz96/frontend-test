@@ -9,10 +9,6 @@ import { kebabToCamel } from '@/filter';
 
 const routes = [
   {
-    path: '/demo', name: 'Demo',
-    component: () => import('@/views/Demo'),
-  },
-  {
     path: '/:pathMatch(.*)*',
     component: () => import('@/views/404Page.vue')
   },

@@ -14,7 +14,6 @@
 <script>
 import Header from './AppBar.vue'
 import Sidebar from './SideBar.vue'
-import Toolbar from './Tools.vue'
 import Contents from './Content.vue'
 import Footer from './Footer.vue'
 
@@ -23,7 +22,6 @@ export default {
     
     Header,
     Sidebar,
-    Toolbar,
     Contents,
     Footer,
   },

@@ -5,7 +5,6 @@
 <script>
 import Header from './layouts/template/AppBar.vue'
 import Sidebar from './layouts/template/SideBar.vue'
-import Toolbar from './layouts/template/Tools.vue'
 import Footer from './layouts/template/Footer.vue'
 
 export default {
@@ -13,7 +12,6 @@ export default {
     
     Header,
     Sidebar,
-    Toolbar,
     Footer,
   },
 }
