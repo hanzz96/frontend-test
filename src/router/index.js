@@ -2,7 +2,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { routes as mainRoutes } from './mainRoute';
 import store from '@/store';
-import { manageVuexModule } from '@/store/managerVuextModule';
 import productsModule from '@/views/Product/productModule';
 import { AuthRoutes } from './authRoutes';
 import claimModule from '@/views/WarrantyClaim/warrantyClaimModule';

@@ -1,5 +1,4 @@
 import { createStore } from "vuex";
-import { menuAccess } from "./menuAccess";
 import { productStarter } from "@/_starter/productStarter";
 import { PRODUCTS_KEY, WARRANTY_CLAIMS_KEY } from "@/const/storageKey";
 import { warrantyClaimStarter } from "@/_starter/warrantyClaimStarter";
@@ -11,10 +10,6 @@ export default createStore({
     role: 'STAFF',
     theme: 'dark',
     user: JSON.parse(localStorage.getItem('user')) || JSON.parse(sessionStorage.getItem('user')) || null,
-    /**
-     * assume menu access are data provided by backend
-     */
-    menuAccess : menuAccess
   },
   mutations: {
     SET_USER(state, user) {
