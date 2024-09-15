@@ -40,11 +40,11 @@ export default {
     },
     goMain() {
       console.log('goMain');
-      this.$router.push('/');
+      this.$router.push({name:'home'});
     },
     logout() {
       this.$store.dispatch('logout');
-      this.$router.push('/login');
+      this.$router.push({ name: 'login' });
     }
   }
 }
