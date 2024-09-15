@@ -106,7 +106,5 @@ export default {
             this.$emit('close');
         },
     },
-    mounted() {
-    }
 };
 </script>

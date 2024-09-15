@@ -3,14 +3,10 @@
       v-if="visible"
       type="error"
       :value="visible"
-      dense
-      dismissible
       border="left"
       color="red darken-3"
       dark
-      @input="closeAlert"
     >
-      <v-icon left>mdi-alert-circle</v-icon>
       {{ message }}
     </v-alert>
   </template>
@@ -28,9 +24,6 @@
       },
     },
     methods: {
-      closeAlert() {
-        this.$emit('update:visible', false);
-      },
     },
   };
   </script>

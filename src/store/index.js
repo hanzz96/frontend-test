@@ -8,7 +8,7 @@ export default createStore({
     project : 'Vue3 + Vuetify',
     desc : 'Starter Template',
     role: 'STAFF',
-    theme: 'dark',
+    theme: 'light',
     user: JSON.parse(localStorage.getItem('user')) || JSON.parse(sessionStorage.getItem('user')) || null,
   },
   mutations: {

@@ -36,7 +36,7 @@ router.beforeEach((to, from, next) => {
   // console.log(isAuthenticated,'isauthenticated');
   // If trying to access a protected route without being logged in
   if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
-    next({ name: 'Login' });
+    next({ name: 'login' });
   }
   // If already authenticated, redirect from login or "/" to dashboard
   else if (to.matched.some(record => record.meta.guest) && isAuthenticated) {
