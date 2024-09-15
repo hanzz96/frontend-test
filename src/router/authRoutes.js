@@ -6,7 +6,7 @@ export const AuthRoutes = {
     },
     children: [
       {
-        name: 'Login',
+        name: 'login',
         path: '/auth/login',
         component: () => import('@/views/Login/Base.vue')
       },

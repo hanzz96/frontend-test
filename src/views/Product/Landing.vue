@@ -28,6 +28,11 @@
           mdi-delete
         </v-icon>
       </template>
+      <template v-slot:item.createdAt="{ item, value }">
+        <!-- not working -->
+        <!-- {{ value }} -->
+        {{ formatDate(item.raw.createdAt) }}
+      </template>
       <template v-slot:no-data>
         <v-btn color="primary" @click="initialize">
           Reset
@@ -55,10 +60,13 @@
 <script>
 import { mapGetters, mapActions, mapState } from 'vuex';
 import Form from './Form.vue';
+import dateMixin from '@/filter/date';
+
 export default {
   components: {
     Form
   },
+  mixins: [dateMixin],
   name: 'ProductLanding',
   watch: {
     dialog(newVal) {
