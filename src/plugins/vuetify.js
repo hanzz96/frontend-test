@@ -24,7 +24,6 @@ const vuetify = createVuetify({
          },
          dark:{
           colors: {           
-             primary: '#212121',
              sheet : colors.shades.black,
              copyright : colors.grey.darken4,
           }
