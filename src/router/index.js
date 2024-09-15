@@ -50,13 +50,15 @@ router.beforeEach((to, from, next) => {
       store.registerModule(toRouteKebabCase, registeredModules[toRouteKebabCase]);
     }
 
-    let fromRouteKebabCase = kebabToCamel(from.name);
+    next();
+  }
+});
+
+router.afterEach((to, from) => {
+  let fromRouteKebabCase = kebabToCamel(from.name);
     if(from.name != '' && registeredModules[fromRouteKebabCase]){
       store.unregisterModule(fromRouteKebabCase);
     }
-
-    next();
-  }
 });
 
 export default router
