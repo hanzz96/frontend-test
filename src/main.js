@@ -8,12 +8,17 @@ import * as filter from './filter'; // Filter
 
 import App from './App.vue'
 
+import {VDataTable} from 'vuetify/labs/VDataTable';
+
 // Create Vue Instance
 const app = createApp(App);
 
 app.use(vuetify);
 app.use(router);
 app.use(store);
+
+//register component globally
+app.component('v-data-table', VDataTable);
 
 // Global Var 
 app.config.globalProperties.$store = store;
