@@ -35,7 +35,9 @@
           :key="item.title"
           :value="item.value"
           :title="item.title"
-          :to="item.type === 'external' ? '' : item.value"
+          :to="item.value"
+           @click="handleClick(item.value)"
+          :disabled="isCurrentRoute(item.value)"
         >
           <template v-slot:prepend>
             <v-icon :icon="item.prependIcon"></v-icon>
@@ -67,7 +69,15 @@ export default {
   methods: {
     goTo(value) {
       this.$router.push({ name: value });
-      // console.log(value);
+    },
+    isCurrentRoute(path) {
+      return this.$route.path === path;
+    },
+    handleClick(to) {
+      if (this.isCurrentRoute(to)) {
+        // Prevent navigation if already on the route
+        event.preventDefault(); // Prevent default action (navigation)
+      }
     }
   }
 }
